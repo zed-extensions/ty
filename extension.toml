@@ -4,7 +4,7 @@ description = "An extremely fast Python type checker and language server, writte
 version = "0.0.1"
 schema_version = 1
 authors = ["Mrzz <runze.ma@outlook.com>"]
-repository = "https://github.com/astral-sh/ty"
+repository = "https://github.com/zed-extensions/ty"
 
 
 [language_servers.ty]
