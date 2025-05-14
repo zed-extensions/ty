@@ -1,0 +1,12 @@
+id = "ty"
+name = "Ty"
+description = "An extremely fast Python type checker and language server, written in Rust."
+version = "0.0.1"
+schema_version = 1
+authors = ["Mrzz <runze.ma@outlook.com>"]
+repository = "https://github.com/astral-sh/ty"
+
+
+[language_servers.ty]
+name = "Ty"
+languages = ["Python"]
