@@ -1,4 +1,4 @@
-# ty-zed: `astral-sh/ty` for Zed
+# ty: `astral-sh/ty` for Zed
 
 This extension provides [`ty`](https://github.com/astral-sh/ty), an extremely fast Python type checker and language server, for Zed editor.
 
