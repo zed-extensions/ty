@@ -12,7 +12,7 @@ impl zed::Extension for TyExtension {
         _language_server_id: &zed_extension_api::LanguageServerId,
         worktree: &zed_extension_api::Worktree,
     ) -> zed_extension_api::Result<zed_extension_api::Command> {
-        let binary_path = LspSettings::for_worktree("ty", worktree)
+        let binary_path = LspSettings::for_worktree("Ty", worktree)
             .ok()
             .and_then(|s| s.binary)
             .and_then(|b| b.path)
