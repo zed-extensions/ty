@@ -13,7 +13,8 @@ Enable `ty` in your settings.
   "languages": {
     "Python": {
       "language_servers": ["ty"]
-  },
+    }
+  }
 }
 ```
 
@@ -29,6 +30,7 @@ Configure under `lsp.ty.settings` as required. The "binary" setting must be fill
         "path": "/Users/yourname/.local/bin/ty",
         "arguments": ["server"]
       }
+    }
   }
 }
 ```
