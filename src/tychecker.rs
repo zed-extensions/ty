@@ -12,16 +12,28 @@ impl zed::Extension for TyExtension {
         _language_server_id: &zed_extension_api::LanguageServerId,
         worktree: &zed_extension_api::Worktree,
     ) -> zed_extension_api::Result<zed_extension_api::Command> {
-        let binary_path = LspSettings::for_worktree("Ty", worktree)
-            .ok()
-            .and_then(|s| s.binary)
-            .and_then(|b| b.path)
-            .ok_or("Ty binary path not found in configuration")?;
+        let env = worktree.shell_env();
+
+        if let Ok(lsp_settings) = LspSettings::for_worktree("Ty", worktree) {
+            if let Some(binary) = lsp_settings.binary {
+                if let Some(path) = binary.path {
+                    let args = binary.arguments.unwrap_or(vec!["server".to_string()]);
+                    return Ok(zed::Command {
+                        command: path,
+                        args,
+                        env,
+                    });
+                }
+            }
+        }
+
+        let path = worktree
+            .which("ty")
+            .ok_or_else(|| "ty must be installed and available in $PATH.".to_string())?;
         Ok(zed::Command {
-            // Ok uses zed::Command
-            command: binary_path,
-            args: vec!["server".into()],
-            env: vec![],
+            command: path,
+            args: vec!["server".to_string()],
+            env: env,
         })
     }
 
